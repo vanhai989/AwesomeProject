@@ -1,9 +1,13 @@
+//@ts-nocheck 
 import * as React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, LogBox } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import FlatlistOptimized from './src/optimizedListView';
-import RealmDatabase from './src/oflineDatabase';
+import FlatlistInfinity from './src/flatlistInfinity';
+import AppWrapper from './src/offlineDatabase';
+
+LogBox.ignoreLogs(['Warning: ...', 'ERROR: ...']); // Ignore log notification by message
+LogBox.ignoreAllLogs();//Ignore all log notifications
 
 const Stack = createNativeStackNavigator();
 
@@ -11,14 +15,12 @@ const GateWay = (props) => {
 
   const navigate = (screenName) => {
     props.navigation.navigate(screenName)
-
   }
-
 
   return (
     <View>
-      <Button title='Flatlist' onPress={() => navigate('FlatlistOptimized')}></Button>
-      <Button title='Realm Database' onPress={() => navigate('RealmDatabase')}></Button>
+      <Button title='FlatlistInfinity' onPress={() => navigate('FlatlistInfinity')}></Button>
+      <Button title='RealmSync' onPress={() => navigate('RealmSync')}></Button>
     </View>
   )
 }
@@ -29,8 +31,8 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="GateWay" component={GateWay} />
-        <Stack.Screen name="FlatlistOptimized" component={FlatlistOptimized} />
-        <Stack.Screen name="RealmDatabase" component={RealmDatabase} />
+        <Stack.Screen name="FlatlistInfinity" component={FlatlistInfinity} />
+        <Stack.Screen name="RealmSync" component={AppWrapper} />
       </Stack.Navigator>
     </NavigationContainer>
   )

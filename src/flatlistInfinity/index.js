@@ -3,7 +3,7 @@ import { FlatList, View } from 'react-native';
 import { useState, useEffect, useCallback, } from 'react';
 
 let page = 1
-const FlatlistOptimized = () => {
+const FlatlistInfinity = () => {
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
 
@@ -84,10 +84,11 @@ const FlatlistOptimized = () => {
                 keyExtractor={(item, index) => index.toString()}
                 removeClippedSubviews={true}
                 initialNumToRender={3}
+                windowSize={15}
                 getItemLayout={_getItemLayout}
             />
         </View>
     );
 };
 
-export default FlatlistOptimized;
+export default FlatlistInfinity;
