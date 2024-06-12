@@ -13,7 +13,7 @@ const WrapTitle = (props) => {
     )
 }
 
-const CharacterListItem = ({ item }) => {
+const NoteItem = ({ item }) => {
 
     return (
     <View style={styles.container}>
@@ -52,6 +52,6 @@ const styles = StyleSheet.create({
 });
 
 export default memo(
-  CharacterListItem,
+  NoteItem,
   (prevProps, nextProps) => prevProps.item.userId === nextProps.item.userId
 );

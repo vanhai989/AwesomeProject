@@ -1,4 +1,4 @@
-import CharacterListItem, { heightItem } from './item';
+import NoteItem, { heightItem } from './item';
 import { FlatList, View } from 'react-native';
 import { useState, useEffect, useCallback, } from 'react';
 
@@ -9,9 +9,8 @@ const FlatlistInfinity = () => {
 
     const fetchData = (pageIndex) => {
         setLoading(true);
-
         const url = `http://localhost:3000/generate-fake-info?page=${pageIndex}`
-        // const url = `http://your ip address:3000/generate-fake-info?page=${pageIndex}`
+        // const url = `http://your ip address:3000/generate-fake-info?page=${pageIndex}` for real device
         console.log('url', url);
         fetch(url)
             .then(response => {
@@ -55,7 +54,7 @@ const FlatlistInfinity = () => {
     }, []);
 
     const renderItem = useCallback(
-        ({ item }) => <CharacterListItem item={item} />,
+        ({ item }) => <NoteItem item={item} />,
         []
     );
 

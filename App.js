@@ -1,10 +1,9 @@
-//@ts-nocheck 
 import * as React from 'react';
 import { View, Text, Button, LogBox } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import FlatlistInfinity from './src/flatlistInfinity';
-import AppWrapper from './src/offlineDatabase';
+import RealmSync from './src/realmSyncToServer/index'
 
 LogBox.ignoreLogs(['Warning: ...', 'ERROR: ...']); // Ignore log notification by message
 LogBox.ignoreAllLogs();//Ignore all log notifications
@@ -32,7 +31,7 @@ const App = () => {
       <Stack.Navigator>
         <Stack.Screen name="GateWay" component={GateWay} />
         <Stack.Screen name="FlatlistInfinity" component={FlatlistInfinity} />
-        <Stack.Screen name="RealmSync" component={AppWrapper} />
+        <Stack.Screen name="RealmSync" component={RealmSync} />
       </Stack.Navigator>
     </NavigationContainer>
   )
